@@ -1,0 +1,66 @@
+  <!-- arrival section -->
+  <section class="arrival_section">
+    <div class="container">
+       <div class="box">
+          <div class="arrival_bg_box">
+            <img src="{{section.settings.banner_image | img_url:'master'}}"/>
+          </div>
+          <div class="row">
+             <div class="col-md-6 ml-auto">
+                <div class="heading_container remove_line_bt">
+                   <h2>
+                      {{section.settings.title}}
+                   </h2>
+                </div>
+                <p style="margin-top: 20px;margin-bottom: 30px;">
+                   {{section.settings.content}}
+                </p>
+                <a href="{{ section.settings.button_link }}">
+                    {{ section.settings.button_name }}
+                </a>
+             </div>
+          </div>
+       </div>
+    </div>
+ </section>
+ <!-- end arrival section -->
+
+ {% schema %}
+ {
+   "name": "Test Banner",
+   "settings": [
+       {
+           "type": "image_picker",
+           "label" : "Banner_image",
+           "id": "banner_image"
+       },
+       {
+        "type": "richtext",
+        "label" : "Title",
+        "id": "title"
+       },
+       {
+        "type": "text",
+        "label" : "Content",
+        "id": "content"
+       },
+       {
+        "type": "text",
+        "label" : "Button name",
+        "id": "button_name"
+        },
+        {
+            "type": "url",
+            "label" : "Link",
+            "id": "button_link"
+        }
+   ],
+   
+
+   "presets": [
+       {
+           "name": "Test Banner"
+       }
+   ]
+ }
+{% endschema %}

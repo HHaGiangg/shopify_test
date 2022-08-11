@@ -1,0 +1,119 @@
+      <!-- client section -->
+      <section class="client_section layout_padding">
+        <div class="container">
+           <div class="heading_container heading_center">
+              <h2>
+                 {{section.settings.title}}
+              </h2>
+           </div>
+           <div id="carouselExample3Controls" class="carousel slide" data-ride="carousel">
+               <div class="carousel-inner">
+                  {% for block in section.blocks %}
+                  {% assign position = forloop.index0 %}
+                 <div class="carousel-item {% if position == 0 %} active {% endif%}">
+                    <div class="box col-lg-10 mx-auto">
+                       <div class="img_container">
+                          <div class="img-box">
+                             <div class="img_box-inner">
+                                <img src="{{block.settings.client_image | img_url:'master'}}"/>
+                             </div>
+                          </div>
+                       </div>
+                       <div class="detail-box">
+                          <h5>
+                             {{block.settings.name}}
+                          </h5>
+                          <h6>
+                             {{block.settings.tag}}
+                          </h6>
+                          <p>
+                             {{block.settings.content}}
+                          </p>
+                       </div>
+                    </div>
+                 </div>
+                 <div class="carousel-item ">
+                    <div class="box col-lg-10 mx-auto">
+                       <div class="img_container">
+                          <div class="img-box">
+                             <div class="img_box-inner">
+                                <img src="{{block.settings.client_image | img_url:'master'}}"/>
+                             </div>
+                          </div>
+                       </div>
+                       <div class="detail-box">
+                          <h5>
+                             {{block.settings.name}}
+                          </h5>
+                          <h6>
+                             {{block.settings.tag}}
+                          </h6>
+                          <p>
+                             {{block.settings.content}}
+                          </p>
+                       </div>
+                    </div>
+                 </div>
+              </div>
+                {% endfor %}
+              <div class="carousel_btn_box">
+                 <a class="carousel-control-prev" href="#carouselExample3Controls" role="button" data-slide="prev">
+                 <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+                 <span class="sr-only">Previous</span>
+                 </a>
+                 <a class="carousel-control-next" href="#carouselExample3Controls" role="button" data-slide="next">
+                 <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                 <span class="sr-only">Next</span>
+                 </a>
+              </div>
+           </div>
+        </div>
+     </section>
+     <!-- end client section -->
+     {% schema %}
+     {
+       "name": "Test Customer",
+       "settings": [
+           {
+               "type": "richtext",
+               "label" : "Title",
+               "id": "title"
+           }
+       ],
+       "blocks": [
+       {
+           "type":"client",
+           "name":"Client",
+           "settings": [
+               {
+                   "type": "image_picker",
+                   "label" : "Client_image",
+                   "id": "client_image"
+               },
+               {
+                   "type": "richtext",
+                   "label" : "Name",
+                   "id": "name"
+               },
+               {
+                   "type": "richtext",
+                   "label" : "Tag",
+                   "id": "tag"
+               },
+               {
+                   "type": "text",
+                   "label" : "Content",
+                   "id": "content"
+               }
+           ]
+           
+       }
+   ],
+    
+       "presets": [
+           {
+               "name": "Test Customer"
+           }
+       ]
+     }
+    {% endschema %}

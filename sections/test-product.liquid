@@ -1,0 +1,81 @@
+  <!-- product section -->
+  <section class="product_section layout_padding">
+    <div class="container">
+       <div class="heading_container heading_center">
+          <h2>
+             {{section.settings.title}}
+          </h2>
+       </div>
+       <div class="row">
+        {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
+            <div class="col-sm-6 col-md-4 col-lg-4">
+             <div class="box">
+                <div class="option_container">
+                   <div class="options">
+                      <a href="{{product.url}}" class="option1">
+                      Add to cart
+                      </a>
+                      <a href="{{product.url}}" class="option2">
+                      Buy Now
+                      </a>
+                   </div>
+                </div>
+                <div class="img-box">
+                    <img src="{{product.featured_media | img_url:'master'}}"/>
+                </div>
+                <div class="detail-box">
+                   <h5>
+                    {{product.title}}
+                   </h5>
+                   <h6>
+                    {{product.price | money}}
+                   </h6>
+                </div>
+             </div>
+          </div>
+          
+          {%- endfor -%}
+          
+        
+         
+       </div>
+       <div class="btn-box">
+          <a href="{{section.settings.button_link}}">
+            {{section.settings.button_name}}
+          </a>
+       </div>
+    </div>
+ </section>
+ <!-- end product section -->
+ {% schema %}
+ {
+   "name": "Test Product",
+   "settings": [
+       {
+           "type": "richtext",
+           "label" : "Title",
+           "id": "title"
+       },
+       {
+        "type": "collection",
+        "label" : "Product",
+        "id": "collection"
+       },
+       {
+        "type": "text",
+        "label" : "Button name",
+        "id": "button_name"
+        },
+        {
+            "type": "url",
+            "label" : "Button link",
+            "id": "button_link"
+        }
+   ],
+   "presets": [
+       {
+           "name": "Test Product"
+       }
+   ]
+ }
+{% endschema %}
